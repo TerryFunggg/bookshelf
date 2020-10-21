@@ -3,11 +3,11 @@ let usage = require('cli-usage');
 const log = console.log;
 
 module.exports = function(argv){
-    const input = require('./rules')(argv);
+    const command = require('./commands')(argv);
     let m = {};
 
     m.checkHelp = function(){
-        if(input.helpRules.some((check)=>check(argv))){
+        if(command.helpRules.some((check)=>check(argv))){
             log(header('BookShelf'));
             log(usage.get('./app/help.md'));
             process.exit();
@@ -16,19 +16,19 @@ module.exports = function(argv){
 
     m.run = function(){
         // TODO: add book command
-        if(input.addBook){
+        if(command.addBook){
             log("adding book");
         }
         // TODO: list book command
-        if(input.listBook){
+        if(command.listBook){
             log("list book");
         }
         // TODO: update book command
-        if(input.updateBook){
+        if(command.updateBook){
             log("update book");
         }
         // TODO: remove book
-        if(input.deleteBook){
+        if(command.deleteBook){
             log("delete book");
         }
     }
