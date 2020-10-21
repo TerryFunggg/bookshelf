@@ -1,0 +1,21 @@
+{
+  "name": "bookshelf",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "bin": {
+    "books": "./index.js"
+  },
+  "author": "tFunggg",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "cli-usage": "^0.1.10",
+    "figlet": "^1.5.0",
+    "lodash": "^4.17.20",
+    "minimist": "^1.2.5"
+  }
+}
