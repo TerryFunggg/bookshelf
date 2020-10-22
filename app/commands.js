@@ -6,11 +6,6 @@ module.exports = function (argv) {
             Object.keys(argv).length == 1;
   }
 
-  function haveHelpCommand(argv){
-    return argv["_"].includes("help") || 
-            argv["h"] != undefined;
-  }
-
   function commandFactory(argv, alias, command) {
     return argv[`${alias}`] != undefined || 
             argv["_"].includes(`${command}`);
@@ -19,7 +14,7 @@ module.exports = function (argv) {
   const command = _.partial(commandFactory, argv);
 
   return {
-    helpRules: [isEmptyCommand, haveHelpCommand],
+    helpRules: [isEmptyCommand, () => command("h","help")],
     addBook:    command("a", "add"),
     listBook:   command("l", "list"),
     updateBook: command("u", "update"),
