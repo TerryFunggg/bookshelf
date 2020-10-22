@@ -15,6 +15,7 @@
     "chalk": "^4.1.0",
     "cli-usage": "^0.1.10",
     "figlet": "^1.5.0",
+    "inquirer": "^7.3.3",
     "lodash": "^4.17.20",
     "minimist": "^1.2.5"
   }
