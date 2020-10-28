@@ -1,5 +1,3 @@
-const log = console.log;
-
 const { haveSearchKeyWord } = require("./helper");
 
 const sqlite3 = require("sqlite3").verbose();
@@ -42,10 +40,34 @@ db.searchBook = function (keyword) {
     let stmt = `SELECT id,title,page,status FROM books`;
     stmt = haveSearchKeyWord(keyword)
       ? stmt + ` WHERE title LIKE '%${keyword}%'`
-      : stmt + " LIMIT 10";
+      : stmt + " LIMIT 20";
     sql.all(stmt, function (err, row) {
       if (err) rej("Data not found");
       res(row);
+    });
+  });
+};
+
+db.updateBook = function (item) {
+  return new Promise((res, rej) => {
+    let { title, page, status } = item;
+    title = title ? `title='${title}',` : "";
+    page = page ? `page=${page},` : "";
+    status = `status='${status}'`;
+    let stmt = `UPDATE books SET ${title}${page}${status} WHERE id=${item.id}`;
+    sql.run(stmt, function (result, err) {
+      if (err) rej("Update data fail...");
+      res("Updte OK");
+    });
+  });
+};
+
+db.deleteBook = function (id) {
+  return new Promise((res, rej) => {
+    let stmt = `DELETE FROM books WHERE id=${id}`;
+    sql.run(stmt, function (result, err) {
+      if (err) rej("Delete data fail...");
+      res("Delete OK");
     });
   });
 };

@@ -24,4 +24,33 @@ module.exports = {
     ];
     return inquirer.prompt(questions);
   },
+
+  forUpdateBook: () => {
+    const questions = [
+      {
+        name: "title",
+        type: "input",
+        message: "New Title : (press enter, no change)",
+      },
+      {
+        name: "page",
+        type: "input",
+        message: "change bookmark :  (press enter, no change) ",
+        validate: function (value) {
+          if (!isNaN(value) && value >= 0) {
+            return true;
+          } else {
+            return "Please enter positive number.";
+          }
+        },
+      },
+      {
+        name: "status",
+        type: "list",
+        message: "Change status : ",
+        choices: ["HOLD", "READING", "DONE"],
+      },
+    ];
+    return inquirer.prompt(questions);
+  },
 };

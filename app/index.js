@@ -32,13 +32,15 @@ module.exports = function (argv) {
       const keywords = argv["l"] || argv["_"][1];
       handler.searchBook(keywords);
     }
-    // TODO: update book command
+
     if (command.updateBook) {
-      log("update book");
+      const id = argv["u"] || argv["_"][1];
+      handler.updateBook(id);
     }
-    // TODO: remove book
+
     if (command.deleteBook) {
-      log("delete book");
+      const id = argv["d"] || argv["_"][1];
+      handler.deleteBook(id);
     }
   };
   return m;
