@@ -13,7 +13,13 @@ Example:
 - `books list java`
 
 ## Update book
-`update`  `-u`    : update books
+command: `update {book id}`
+alias: `-u`
+Example:
+- `books update 2`  
 
 ## Remove book
-`delete`  `-d`    : remove books
+command: `delete {book id}`
+alias: `-d`
+Example:
+- `books delete 1`  
